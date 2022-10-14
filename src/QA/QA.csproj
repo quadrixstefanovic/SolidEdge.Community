@@ -1,11 +1,23 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>NET40</TargetFramework>
+    <TargetFramework>net48</TargetFramework>
     <ApplicationIcon />
     <OutputType>Exe</OutputType>
     <StartupObject />
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+    <FileVersion>1.0.0.0</FileVersion>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Reference Include="Interop.SolidEdge">
+      <HintPath>..\..\..\Interop.SolidEdge\src\Interop.SolidEdge\bin\Release\net48\Interop.SolidEdge.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.3" />
+  </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\SolidEdge.Community\SolidEdge.Community.csproj" />

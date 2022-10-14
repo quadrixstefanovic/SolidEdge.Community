@@ -1,10 +1,9 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>NET40;NET45</TargetFrameworks>
-    <AssemblyVersion>219.0.0.0</AssemblyVersion>
-    <FileVersion>219.0.0.0</FileVersion>
-    <Version>219.0.0</Version>
+    <AssemblyVersion>222.0.0.0</AssemblyVersion>
+    <FileVersion>222.9.0.0</FileVersion>
+    <Version>222.9.0</Version>
     <Authors>Jason Newell</Authors>
     <Company>Jason Newell</Company>
     <Description>Community provided package for automating Solid Edge.</Description>
@@ -14,7 +13,7 @@
     <RepositoryUrl>https://github.com/SolidEdgeCommunity/SolidEdge.Community.git</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageTags>interop solidedge community contrib</PackageTags>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <TargetFramework>net48</TargetFramework>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|NET40|AnyCPU'">
@@ -26,13 +25,14 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Interop.SolidEdge" Version="219.0.0">
-      <PrivateAssets>None</PrivateAssets>
-    </PackageReference>
+    <Reference Include="Interop.SolidEdge">
+      <HintPath>..\..\..\Interop.SolidEdge\src\Interop.SolidEdge\bin\Release\net48\Interop.SolidEdge.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows.Forms" />
   </ItemGroup>
 
   <ItemGroup>
-    <Reference Include="System.Windows.Forms" />
+    <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.3" />
   </ItemGroup>
 
 </Project>

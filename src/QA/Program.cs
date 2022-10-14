@@ -1,5 +1,4 @@
 ﻿using SolidEdgeCommunity;
-using System;
 
 namespace QA
 {
