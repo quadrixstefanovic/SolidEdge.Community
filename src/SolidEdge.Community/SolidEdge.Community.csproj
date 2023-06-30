@@ -1,9 +1,9 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <AssemblyVersion>222.0.0.0</AssemblyVersion>
-    <FileVersion>222.9.0.0</FileVersion>
-    <Version>222.9.0</Version>
+    <AssemblyVersion>223.0.6.0</AssemblyVersion>
+    <FileVersion>223.0.6.0</FileVersion>
+    <Version>223.0.6</Version>
     <Authors>Jason Newell</Authors>
     <Company>Jason Newell</Company>
     <Description>Community provided package for automating Solid Edge.</Description>
@@ -14,6 +14,8 @@
     <RepositoryType>git</RepositoryType>
     <PackageTags>interop solidedge community contrib</PackageTags>
     <TargetFramework>net48</TargetFramework>
+    <LangVersion>11</LangVersion>
+    <Nullable>enable</Nullable>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|NET40|AnyCPU'">
@@ -22,6 +24,10 @@
   
   <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|NET45|AnyCPU'">
     <DocumentationFile>bin\Release\net45\SolidEdge.Community.xml</DocumentationFile>
+  </PropertyGroup>
+  
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DebugType>embedded</DebugType>
   </PropertyGroup>
 
   <ItemGroup>

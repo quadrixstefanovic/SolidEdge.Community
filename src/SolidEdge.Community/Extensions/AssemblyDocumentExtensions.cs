@@ -56,5 +56,47 @@ namespace SolidEdgeCommunity.Extensions
         {
             return document.Variables as SolidEdgeFramework.Variables;
         }
+        
+        /// <summary>
+        /// Returns the count of occurrences and all sub-occurrences for the referenced document.
+        /// Simplified sub-assemblies are treated as a single occurrence.
+        /// </summary>
+        /// <param name="document"></param>
+        /// <returns></returns>
+        public static int GetOccurrenceCount(this SolidEdgeAssembly.AssemblyDocument document)
+        {
+            var count = 0;
+
+            foreach (SolidEdgeAssembly.Occurrence occurrence in document.Occurrences)
+            {
+                count++;
+
+                if (!occurrence.Subassembly || occurrence.UseSimplified) continue;
+                
+                foreach (SolidEdgeAssembly.SubOccurrence subOccurrence in occurrence.SubOccurrences)
+                {
+                    count++;
+
+                    if (subOccurrence.Subassembly)
+                    {
+                        SubOccurrenceCount(subOccurrence);
+                    }
+                }
+            }
+
+            return count;
+
+            void SubOccurrenceCount(SolidEdgeAssembly.SubOccurrence occurrence)
+            {
+                foreach (SolidEdgeAssembly.SubOccurrence subOccurrence in occurrence.SubOccurrences)
+                {
+                    count++;
+
+                    if (!subOccurrence.Subassembly || subOccurrence.UseSimplified) continue;
+                    
+                    SubOccurrenceCount(subOccurrence);
+                }
+            }
+        }
     }
 }
